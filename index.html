@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💖 Un correo para ti 💖</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#fffafc;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    margin:0;
+    text-align:center;
+}
+
+.screen{
+    display:none;
+    animation:fadeIn .8s ease;
+}
+
+.screen.active{
+    display:block;
+}
+
+h2{
+    color:#444;
+    margin-bottom:20px;
+}
+
+.main-img{
+    width:300px;
+    max-width:90%;
+    cursor:pointer;
+    transition:transform .3s ease;
+}
+
+.main-img:hover{
+    transform:scale(1.05);
+}
+
+.final-img{
+    width:90%;
+    max-width:800px;
+    height:auto;
+}
+
+.return-btn{
+    margin-top:20px;
+    padding:12px 25px;
+    border:none;
+    border-radius:8px;
+    background:#ff4f81;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.return-btn:hover{
+    background:#ff2a66;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:scale(.95);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Pantalla 1 -->
+<div class="screen active" id="screen1">
+    <h2>Hola, te llegó un correo 💌</h2>
+    <img src="imagenes/imagen1.jpg" alt="Correo" class="main-img" onclick="nextScreen(2)">
+</div>
+
+<!-- Pantalla 2 -->
+<div class="screen" id="screen2">
+    <h2>Tienes una cartita ✨</h2>
+    <img src="imagenes/imagen2.jpg" alt="Carta" class="main-img" onclick="nextScreen(3)">
+</div>
+
+<!-- Pantalla 3 -->
+<div class="screen" id="screen3">
+    <h2>Ábrela 💖</h2>
+    <img src="imagenes/imagen3.jpg" alt="Sobre" class="main-img" onclick="nextScreen(4)">
+</div>
+
+<!-- Pantalla 4 -->
+<div class="screen" id="screen4">
+    <h2>Ya casi... 🌷</h2>
+    <img src="imagenes/imagen4.jpg" alt="Sorpresa" class="main-img" onclick="nextScreen(5)">
+</div>
+
+<!-- Pantalla 5 -->
+<div class="screen" id="screen5">
+    <img src="imagenes/imagen5.png" alt="Mensaje Final" class="final-img">
+
+    <br>
+
+    <button class="return-btn" onclick="nextScreen(1)">
+        🔙 Volver al inicio
+    </button>
+</div>
+
+<script>
+function nextScreen(num){
+    document.querySelectorAll('.screen').forEach(screen=>{
+        screen.classList.remove('active');
+    });
+
+    document.getElementById('screen'+num).classList.add('active');
+}
+</script>
+
+</body>
+</html>
